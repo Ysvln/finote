@@ -1,0 +1,47 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           Int          @id @default(autoincrement())
+  email        String       @unique
+  passwordHash String
+  displayName  String?
+  createdAt    DateTime     @default(now())
+  transactions Transaction[]
+  sessions     Session[]
+}
+
+model Session {
+  id        String   @id
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    Int
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  @@index([userId, expiresAt])
+}
+
+model Transaction {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    Int
+
+  date      DateTime
+  type      String
+  category  String
+  title     String?
+  amount    Int
+  payment   String?
+  memo      String?
+  tags      String?
+
+  createdAt DateTime @default(now())
+
+  @@index([userId, date(sort: Desc)])
+  @@index([userId, type, category])
+}
