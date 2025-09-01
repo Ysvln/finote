@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Pretendard Variable";
+  font-style: normal;
+  font-weight: 45 920;
+  font-display: swap;
+  src: url("/fonts/PretendardVariable.woff2") format("woff2-variations");
+}
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -115,6 +123,7 @@
     @apply border-border outline-ring/50;
   }
   body {
+    font-family: "Pretendard Variable", system-ui, sans-serif;
     @apply bg-background text-foreground;
   }
 }
