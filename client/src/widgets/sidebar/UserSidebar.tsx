@@ -20,7 +20,7 @@ const items = [
     icon: Home,
   },
   {
-    title: "거래내역",
+    title: "거래 내역",
     url: "/ledger",
     icon: ReceiptText,
   },
