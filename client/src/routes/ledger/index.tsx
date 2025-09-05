@@ -1,4 +1,4 @@
-import { LedgerTable } from "@/features/ledger/ledgerTable";
+import { LedgerTable } from "@/features/ledger/LedgerTable";
 import { createFileRoute } from "@tanstack/react-router";
 import { Payment } from "@/entities/payment/payment.types";
 import { Button } from "@/shared/ui/button";

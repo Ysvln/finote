@@ -1,5 +1,5 @@
 import { SidebarProvider, SidebarTrigger } from "@/shared/ui/sidebar";
-import { UserSidebar } from "@/widgets/sidebar/userSidebar";
+import { UserSidebar } from "@/widgets/sidebar/UserSidebar";
 import { ReactNode } from "react";
 
 interface AppLayoutProps {
