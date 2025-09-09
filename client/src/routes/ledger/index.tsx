@@ -1,7 +1,7 @@
 import { LedgerTable } from "@/features/ledger/LedgerTable";
 import { createFileRoute } from "@tanstack/react-router";
 import { Payment } from "@/entities/payment/payment.types";
-import { Button } from "@/shared/ui/button";
+import { DownloadXlsxButton } from "@/features/ledger/DownloadXlsxButton";
 
 export const Route = createFileRoute("/ledger/")({
   component: RouteComponent,
@@ -15,6 +15,7 @@ const mockData: Payment[] = [
     type: "지출",
     description: "점심 (우동)",
     amount: 9000,
+    memo: "",
   },
   {
     paymentDate: "2025.09.02",
@@ -41,9 +42,7 @@ function RouteComponent() {
     <section className="flex-col flex gap-6">
       <h2 className="text-2xl font-bold">거래 내역</h2>
       <div className="flex-col flex gap-2">
-        <Button size="sm" className="ml-auto">
-          다운로드
-        </Button>
+        <DownloadXlsxButton data={mockData} className="ml-auto" size="sm" />
         <LedgerTable data={mockData} />
       </div>
     </section>
