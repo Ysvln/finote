@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, buttonVariants } from "@/shared/ui/button";
 import { Payment } from "@/entities/payment/payment.types";
-import { toXlsx } from "@/shared/lib/csv/toCsv";
+import { toXlsx } from "@/shared/lib/util/file";
 import { VariantProps } from "class-variance-authority";
 import * as XLSX from "xlsx";
 
