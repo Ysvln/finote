@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { LedgerTable } from "@/features/ledger/LedgerTable";
 import { createFileRoute } from "@tanstack/react-router";
 import { Payment } from "@/entities/payment/payment.types";
 import { DownloadXlsxButton } from "@/features/ledger/DownloadXlsxButton";
+import { CreateLedgerModal } from "@/features/ledger/create-ledger/create-leger.ui";
 
 export const Route = createFileRoute("/ledger/")({
   component: RouteComponent,
@@ -38,12 +40,19 @@ const mockData: Payment[] = [
 ];
 
 function RouteComponent() {
+  const [data, setData] = useState<Payment[]>(mockData);
+
   return (
     <section className="flex-col flex gap-6">
       <h2 className="text-2xl font-bold">거래 내역</h2>
       <div className="flex-col flex gap-2">
-        <DownloadXlsxButton data={mockData} className="ml-auto" size="sm" />
-        <LedgerTable data={mockData} />
+        <div className="flex gap-2 justify-end">
+          <CreateLedgerModal
+            onSave={(newData) => setData((prev) => [...prev, ...newData])}
+          />
+          <DownloadXlsxButton data={data} size="sm" />
+        </div>
+        <LedgerTable data={data} />
       </div>
     </section>
   );

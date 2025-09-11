@@ -3,6 +3,7 @@ import { paymentColumns } from "@/entities/payment/table/columns";
 import { Payment } from "@/entities/payment/payment.types";
 import { useDataTable } from "@/shared/hooks/useDataTable";
 import { DataTablePagination } from "@/shared/ui/table/Pagination";
+
 interface LedgerTableProps {
   data: Payment[];
 }
