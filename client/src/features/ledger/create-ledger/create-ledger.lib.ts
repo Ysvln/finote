@@ -15,6 +15,8 @@ import { normalizeKey } from "@/shared/lib/util/file";
  * validateHeaders(["wallet", "category"])
  * // ["paymentDate", "type", "description", "amount"]
  */
+
+// TODO: 제네릭으로 타입 받아 유효성 검사, 다른 도메인에서도 사용 가능하도록 수정 필요
 export function validateHeaders(headers: string[]): string[] {
   const required = [
     "paymentDate",
@@ -24,7 +26,8 @@ export function validateHeaders(headers: string[]): string[] {
     "description",
     "amount",
   ];
-  const normalized = headers.map((h) => h.replace(/\uFEFF/g, "").trim());
+
+  const normalized = headers.map((h) => normalizeKey(h));
   const missing = required.filter((key) => !normalized.includes(key));
   return missing;
 }

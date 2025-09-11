@@ -26,6 +26,7 @@ export function CreateLedgerModal({ onSave }: Props) {
 
   const MAX_FILE_SIZE = 5 * 1024 * 1024;
 
+  // TODO: 파싱된 데이터 form 관리 및 rhf & zod 이용하여 유효성 검사
   const handleFile = (file: File) => {
     if (file.size > MAX_FILE_SIZE) {
       alert("파일 크기는 최대 5MB까지만 지원합니다.");
